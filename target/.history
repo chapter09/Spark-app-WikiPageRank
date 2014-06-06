@@ -1,0 +1,53 @@
+help
+tasks
+tasks package
+pacakge
+help package
+package
+run
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 1 10 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 10 10 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 10 2 False
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 10 200 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 10 2000 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 15 1000 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 15 3000 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 15 2000 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 20 5000 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 20 1500 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 200 1500 True
+exit
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 200 1500 True
+exit
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 200 1500 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 1000 1500 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 1500 1500 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 0.003 1500 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 0.003 500 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 0.003 1500 True
+run hdfs://192.168.1.12:9000/freebase-13G 0.003 1500 True
+run hdfs://192.168.1.12:9000/freebase-13G 0.003 100 True
+0
+run hdfs://192.168.1.12:9000/freebase-13G 0.003 300 True
+run hdfs://192.168.1.12:9000/freebase-13G 0.003 10 True
+run hdfs://192.168.1.12:9000/freebase-13G 0.003 100 True
+exit
+package
+run hdfs://192.168.1.12:9000/freebase-13G 0.003 100 True
+run hdfs://192.168.1.12:9000/freebase-13G 0 100 True
+run hdfs://192.168.1.12:9000/PageRank/freebase-wex-2010-07-05-articles.tsv 0 500 True
+run hdfs://192.168.1.12:9000/freebase-13G 0 100 True
+quit
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0 100 True
+:quit
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0 100 True
+exit
+prject
+prject WikiPageRank
+project WikiPageRank
+exit
+:quit
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
