@@ -4,7 +4,7 @@
 		module="wikipagerank-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20140524172624"
+		publication="20140621223043"
 		e:scalaVersion="2.10" e:sbtVersion="0.13"
 	>
 		<description>

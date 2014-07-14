@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package WikiPageRank
+package org.apache.spark.examples.bagel
 
 import org.apache.spark._
 import org.apache.spark.SparkContext._
@@ -23,10 +23,6 @@ import org.apache.spark.SparkContext._
 import org.apache.spark.bagel._
 import org.apache.spark.bagel.Bagel._
 
-// import org.apache.log4j._
-// import org.apache.log4j.Level
-
-import org.apache.log4j.PropertyConfigurator
 import scala.xml.{XML,NodeSeq}
 
 /**
@@ -41,22 +37,12 @@ object WikipediaPageRank {
         "Usage: WikipediaPageRank <inputFile> <threshold> <numPartitions> <usePartitioner>")
       System.exit(-1)
     }
-
-   //  PropertyConfigurator.configure("/home/wanghao/spark/conf/log4j.properties")
-   // Logger.getLogger("org").setLevel(Level.WARN)
-   // Logger.getLogger("akka").setLevel(Level.WARN)
-    
     val sparkConf = new SparkConf()
-    sparkConf.setMaster("spark://192.168.1.12:7077")
+//    sparkConf.setMaster("spark://sing12:7077")
+//    sparkConf.setMaster("local")
     sparkConf.setAppName("WikipediaPageRank")
     sparkConf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
     sparkConf.set("spark.kryo.registrator",  classOf[PRKryoRegistrator].getName)
-    sparkConf.set("spark.executor.memory", "36g")
-    sparkConf.set("spark.cores.max", "48")
-    sparkConf.set("spark.storage.memoryFraction", "0.3")
-    // sparkConf.set("spark.akka.timeout", "300")
-    // sparkConf.set("spark.akka.failure-detector.threshold", "600.0")
-    // sparkConf.set("spark.akka.heartbeat.pauses", "1000")
 
     val inputFile = args(0)
     val threshold = args(1).toDouble
@@ -64,9 +50,12 @@ object WikipediaPageRank {
     val usePartitioner = args(3).toBoolean
 
     sparkConf.setAppName("WikipediaPageRank")
-    val sc = new SparkContext(sparkConf)
-    sc.addJar("target/scala-2.10/wikipagerank_2.10-1.0.jar")
+    sparkConf.set("spark.executor.memory", "60g")
+    sparkConf.set("spark.cores.max", "48")
+    sparkConf.set("spark.kryoserializer.buffer.mb", "24")
 
+    val sc = new SparkContext(sparkConf)
+    sc.addJar("/home/wanghao/Documents/Scala/WikiPageRank/target/scala-2.10/wikipagerank_2.10-1.0.jar")
     // Parse the Wikipedia page data into a graph
     val input = sc.textFile(inputFile)
 
@@ -95,11 +84,9 @@ object WikipediaPageRank {
       (id, new PRVertex(1.0 / numVertices, outEdges))
     })
     if (usePartitioner) {
-      vertices = vertices.partitionBy(new HashPartitioner(sc.defaultParallelism)).persist(storage.StorageLevel.MEMORY_AND_DISK)
-      //vertices = vertices.partitionBy(new HashPartitioner(sc.defaultParallelism)).cache()
+      vertices = vertices.partitionBy(new HashPartitioner(sc.defaultParallelism)).cache
     } else {
-      vertices = vertices.persist(storage.StorageLevel.MEMORY_AND_DISK)
-      //vertices = vertices.cache()
+      vertices = vertices.cache
     }
     println("Done parsing input file.")
 
@@ -115,14 +102,11 @@ object WikipediaPageRank {
 
     // Print the result
     System.err.println("Articles with PageRank >= " + threshold + ":")
-//    val top =
-//      (result
-//       .filter { case (id, vertex) => vertex.value >= threshold }
-//       .map { case (id, vertex) => "%s\t%s\n".format(id, vertex.value) }
-//       .collect.mkString)
-    result.filter { case (id, vertex) => vertex.value >= threshold }
-      .map { case (id, vertex) => "%s\t%s\n".format(id, vertex.value) }
-      .saveAsTextFile("hdfs://192.168.1.12:9000/PageRank/result.txt")
-    //println(top)
+    val top =
+      (result
+       .filter { case (id, vertex) => vertex.value >= threshold }
+       .map { case (id, vertex) => "%s\t%s\n".format(id, vertex.value) }
+       .collect.mkString)
+    println(top)
   }
 }

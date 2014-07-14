@@ -51,3 +51,35 @@ exit
 :quit
 exit
 run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+package
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+package
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+package
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+package
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exit
+quit
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+quit
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True\
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+package
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exir
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+1
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exit
+run hdfs://192.168.1.12:9000/freebase-13G 0.000005 100 True
+exit
